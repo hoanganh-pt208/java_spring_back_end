@@ -17,7 +17,7 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	/*
+	/**
 	 * Method get List User
 	 */
 	@SuppressWarnings("unchecked")
@@ -29,7 +29,7 @@ public class UserDaoImpl implements UserDao {
 		return userList;
 	}
 	
-	/*
+	/**
 	 * Method get User By User Name
 	 */
 	public User getUserByUserName(String user_name) {

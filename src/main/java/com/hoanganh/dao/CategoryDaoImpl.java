@@ -15,7 +15,8 @@ import com.hoanganh.model.Category;
 public class CategoryDaoImpl implements CategoryDao{
 	@Autowired
 	private SessionFactory sessionFactory;
-	/*
+	
+	/**
 	 * Method get List Category
 	 */
 	@SuppressWarnings("unchecked")

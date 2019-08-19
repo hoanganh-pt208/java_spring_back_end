@@ -15,7 +15,8 @@ import com.hoanganh.model.Category;
 public class CategoryServiceImpl implements CategoryService{
 	@Autowired
 	private CategoryDao categoryDao;
-	/*
+	
+	/**
 	 * Method get List Category
 	 */
 	public List<Category> getListCategory() {

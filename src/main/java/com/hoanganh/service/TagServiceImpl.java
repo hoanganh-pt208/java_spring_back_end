@@ -15,7 +15,7 @@ import com.hoanganh.model.Tag;
 public class TagServiceImpl implements TagService {
 	@Autowired
 	private TagDao tagDao;
-	/*
+	/**
 	 * Method get Tag List
 	 */
 	public List<Tag> getTagList() {

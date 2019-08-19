@@ -17,14 +17,14 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	/*
+	/**
 	 * Method decode MD5
 	 */
 	private String pwdMD5(String pwd) {
 		return DigestUtils.md5Hex(pwd);
 	}
 
-	/*
+	/**
 	 * Method get List User
 	 */
 	@Transactional
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.getListUser();
 	}
 
-	/*
+	/**
 	 * Method check user login
 	 */
 	public boolean check_login(String user_name, String password) {
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	/*
+	/**
 	 * Method get User By User Name
 	 */
 	private User getUserByUserName(String user_name) {

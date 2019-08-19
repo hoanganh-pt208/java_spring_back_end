@@ -16,7 +16,8 @@ import com.hoanganh.model.Tag;
 public class TagDaoImpl implements TagDao {
 	@Autowired
 	private SessionFactory sessionFactory;
-	/*
+	
+	/**
 	 * Method get List Tag
 	 */
 	@SuppressWarnings("unchecked")

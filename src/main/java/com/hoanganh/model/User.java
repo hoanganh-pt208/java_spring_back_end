@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/*
+/**
  * This is our model class and it corresponds to Country table in database
  */
 @Entity
