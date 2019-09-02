@@ -12,7 +12,14 @@
     <context:property-placeholder location="classpath:application.properties" />
  
     <mvc:annotation-driven />
- 
+    
+    <!-- Add Swagger UI -->
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+	<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+ 	<bean
+		class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration"
+		id="swagger2Config" />
+		
     <!-- Specifying the Resource location to load JS, CSS, Images etc -->
     <!-- <mvc:resources mapping="/resources/**" location="/resources/" /> -->
 
