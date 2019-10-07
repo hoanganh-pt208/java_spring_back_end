@@ -7,9 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * This is our model class and it corresponds to Country table in database
- */
 @Entity
 @Table(name="USER_MNG")
 public class User {
@@ -29,6 +26,17 @@ public class User {
 	
 	@Column(name="is_admin")
 	private String is_admin;
+	
+	@Column(name="enabled")
+	private int enabled;
+
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
 
 	public int getId() {
 		return id;

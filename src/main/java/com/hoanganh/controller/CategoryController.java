@@ -17,7 +17,7 @@ import com.hoanganh.service.CategoryService;
 @RequestMapping("/category")
 public class CategoryController {
 	@Autowired
-    private CategoryService categoryService;
+	private CategoryService categoryService;
 
 	/**
 	 * Method get List Category

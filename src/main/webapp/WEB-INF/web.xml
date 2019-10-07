@@ -1,4 +1,15 @@
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+</web-app>
+
+
+<!-- XML config START -->
+
+<!-- <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
@@ -18,7 +29,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	Creates the Spring Container shared by all Servlets and Filters
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -26,15 +37,15 @@
 		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
 	</listener>
 	
-	<!-- Loads Spring Security config file -->
+	Loads Spring Security config file
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>  
+		<param-value>
             /WEB-INF/spring-security.xml
         </param-value>
 	</context-param>
 
-	<!-- Spring Security -->
+	Spring Security
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -45,7 +56,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- Fix bug CORS function when call URL -->
+	Fix bug CORS function when call URL
 	<filter>
 		<filter-name>CORSFilter</filter-name>
 		<filter-class>rest.api.filter.CORSFilter</filter-class>
@@ -56,3 +67,4 @@
 	</filter-mapping>
 </web-app>
 
+ -->

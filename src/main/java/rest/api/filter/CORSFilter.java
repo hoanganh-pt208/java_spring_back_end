@@ -1,4 +1,4 @@
-package rest.api.filter;
+/*package rest.api.filter;
 
 import java.io.IOException;
 
@@ -26,3 +26,4 @@ public class CORSFilter implements Filter {
     public void destroy() {}
 }
 
+*/
