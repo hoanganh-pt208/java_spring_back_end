@@ -13,9 +13,7 @@ public class AppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext container) throws ServletException {
     	AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
     	
-        ctx.register(AppConfig.class);
         ctx.register(HibernateConfig.class);
-        ctx.register(Swagger2UIConfig.class);
         ctx.register(CORSFilterConfig.class);
         
         ctx.setServletContext(container);

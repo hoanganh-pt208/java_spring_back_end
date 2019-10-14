@@ -17,6 +17,17 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
 	private static String REALM = "MY_OAUTH_REALM";
+	
+	static final String CLIENT_ID = "my-trusted-client";
+    static final String CLIENT_SECRET = "secret";
+    
+    static final String GRANT_TYPE = "password";
+    
+    static final String SCOPE_READ = "read";
+    static final String SCOPE_WRITE = "write";
+    
+    static final int ACCESS_TOKEN_VALIDITY_SECONDS = 1 * 60 * 60;
+    static final int REFRESH_TOKEN_VALIDITY_SECONDS = 6 * 60 * 60;
 
 	@Autowired
 	private TokenStore tokenStore;
@@ -31,11 +42,14 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
-		clients.inMemory().withClient("my-trusted-client")
-				.authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
-				.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT").scopes("read", "write", "trust").secret("secret")
-				.accessTokenValiditySeconds(120).// Access token is only valid for 2 minutes.
-				refreshTokenValiditySeconds(600);// Refresh token is only valid for 10 minutes.
+		clients
+				.inMemory()
+		        .withClient(CLIENT_ID)
+		        .secret(CLIENT_SECRET)
+		        .authorizedGrantTypes(GRANT_TYPE)
+		        .scopes(SCOPE_READ, SCOPE_WRITE)
+		        .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS).
+		        refreshTokenValiditySeconds(REFRESH_TOKEN_VALIDITY_SECONDS);
 	}
 
 	@Override
