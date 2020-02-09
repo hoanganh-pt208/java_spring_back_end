@@ -14,20 +14,10 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
-
-	private static String REALM = "MY_OAUTH_REALM";
-	
-	static final String CLIENT_ID = "my-trusted-client";
-    static final String CLIENT_SECRET = "secret";
-    
-    static final String GRANT_TYPE = "password";
-    
-    static final String SCOPE_READ = "read";
-    static final String SCOPE_WRITE = "write";
-    
-    static final int ACCESS_TOKEN_VALIDITY_SECONDS = 1 * 60 * 60;
-    static final int REFRESH_TOKEN_VALIDITY_SECONDS = 6 * 60 * 60;
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+	private static String REALM = "CRM_REALM";
+	private static final int ONE_DAY = 60 * 60 * 24;
+	private static final int THIRTY_DAYS = 60 * 60 * 24 * 30;
 
 	@Autowired
 	private TokenStore tokenStore;
@@ -41,15 +31,10 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-
-		clients
-				.inMemory()
-		        .withClient(CLIENT_ID)
-		        .secret(CLIENT_SECRET)
-		        .authorizedGrantTypes(GRANT_TYPE)
-		        .scopes(SCOPE_READ, SCOPE_WRITE)
-		        .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS).
-		        refreshTokenValiditySeconds(REFRESH_TOKEN_VALIDITY_SECONDS);
+		clients.inMemory().withClient("crmClient1").secret("crmSuperSecret")
+				.authorizedGrantTypes("password", "refresh_token").authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
+				.scopes("read", "write", "trust")
+				.accessTokenValiditySeconds(3000).refreshTokenValiditySeconds(THIRTY_DAYS);
 	}
 
 	@Override
@@ -60,7 +45,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-		oauthServer.realm(REALM + "/client");
+		oauthServer.realm(REALM);
 	}
-
 }
