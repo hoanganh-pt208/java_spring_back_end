@@ -25,8 +25,16 @@ public class User {
 	private String email;
 	
 	@Column(name="is_admin")
-	private String is_admin;
+	private int is_admin;
 	
+	public int getIs_admin() {
+		return is_admin;
+	}
+
+	public void setIs_admin(int is_admin) {
+		this.is_admin = is_admin;
+	}
+
 	@Column(name="enabled")
 	private int enabled;
 
@@ -70,11 +78,4 @@ public class User {
 		this.email = email;
 	}
 
-	public String getIs_admin() {
-		return is_admin;
-	}
-
-	public void setIs_admin(String is_admin) {
-		this.is_admin = is_admin;
-	}
 }

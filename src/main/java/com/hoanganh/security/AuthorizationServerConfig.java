@@ -33,8 +33,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("crmClient1").secret("crmSuperSecret")
 				.authorizedGrantTypes("password", "refresh_token").authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
-				.scopes("read", "write", "trust")
-				.accessTokenValiditySeconds(3000).refreshTokenValiditySeconds(THIRTY_DAYS);
+				.scopes("read", "write", "trust").accessTokenValiditySeconds(3000)
+				.refreshTokenValiditySeconds(THIRTY_DAYS);
 	}
 
 	@Override
@@ -45,6 +45,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-		oauthServer.realm(REALM);
+		oauthServer.realm(REALM + "/client");
 	}
 }

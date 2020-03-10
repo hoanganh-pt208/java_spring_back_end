@@ -31,14 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().withUser("crmadmin").password("crmpass").roles("ADMIN", "USER").and()
 				.withUser("crmuser").password("crmpass").roles("USER");
 	}
-
+	
 	@Override
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	protected void configure(HttpSecurity http) throws Exception {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable()
-				.authorizeRequests()
-				.antMatchers("/oauth/token").permitAll()
-				.anyRequest().authenticated().and().httpBasic().realmName("CRM_REALM");
+				.authorizeRequests().antMatchers("/oauth/token").permitAll().anyRequest().authenticated().and()
+				.httpBasic().realmName("CRM_REALM");
 	}
 
 	@Override
@@ -69,5 +68,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		store.setTokenStore(tokenStore);
 		return store;
 	}
-
+	
 }

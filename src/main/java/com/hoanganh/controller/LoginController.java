@@ -20,6 +20,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseModel login(@RequestParam("user_name") String user_name,@RequestParam("password") String password) {
+		System.out.println("User Name : "+user_name);
 		boolean result = userService.check_login(user_name, password);
 		ResponseModel responseModel = new ResponseModel();
 		try {

@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
 	 * Method check user login
 	 */
 	public boolean check_login(String user_name, String password) {
-		// TODO Auto-generated method stub
 		User user = this.getUserByUserName(user_name);
 		if (user != null) {
 			String user_real_password = user.getPassword();
