@@ -19,9 +19,9 @@ public class LoginController {
 	 * Method login
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseModel login(@RequestParam("user_name") String user_name,@RequestParam("password") String password) {
-		System.out.println("User Name : "+user_name);
-		boolean result = userService.check_login(user_name, password);
+	public ResponseModel login(@RequestParam("username") String username,@RequestParam("password") String password) {
+		System.out.println("User Name : "+username);
+		boolean result = userService.check_login(username, password);
 		ResponseModel responseModel = new ResponseModel();
 		try {
 			if (result) {

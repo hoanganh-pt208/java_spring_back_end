@@ -14,5 +14,5 @@ public interface UserService {
 	/**
 	 * Method check user login
 	 */
-	public boolean check_login(String user_name, String password);
+	public boolean check_login(String username, String password);
 }

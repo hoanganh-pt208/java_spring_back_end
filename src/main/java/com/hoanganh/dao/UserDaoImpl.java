@@ -32,10 +32,10 @@ public class UserDaoImpl implements UserDao {
 	/**
 	 * Method get User By User Name
 	 */
-	public User getUserByUserName(String user_name) {
+	public User getUserByUserName(String username) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(User.class, "user");
-		criteria.add(Restrictions.eq("user_name", user_name));
+		criteria.add(Restrictions.eq("username", username));
 		User user = (User) criteria.uniqueResult();
 		return user;
 	}

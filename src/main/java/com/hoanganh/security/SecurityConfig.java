@@ -19,6 +19,8 @@ import org.springframework.security.oauth2.provider.request.DefaultOAuth2Request
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
+import com.hoanganh.service.MyUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,12 +28,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private ClientDetailsService clientDetailsService;
 
+	// @Autowired
+	// public void globalUserDetails(AuthenticationManagerBuilder auth) throws
+	// Exception {
+	// auth.inMemoryAuthentication().withUser("crmadmin").password("crmpass").roles("ADMIN",
+	// "USER").and()
+	// .withUser("crmuser").password("crmpass").roles("USER");
+	// }
+
+	@Autowired
+	private MyUserDetailsService myUserDetailsService;
+
 	@Autowired
 	public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("crmadmin").password("crmpass").roles("ADMIN", "USER").and()
-				.withUser("crmuser").password("crmpass").roles("USER");
+		auth.userDetailsService(myUserDetailsService);
 	}
-	
+
 	@Override
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	protected void configure(HttpSecurity http) throws Exception {
@@ -68,5 +80,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		store.setTokenStore(tokenStore);
 		return store;
 	}
-	
+
 }

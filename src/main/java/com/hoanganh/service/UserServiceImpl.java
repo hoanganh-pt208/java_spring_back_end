@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * Method check user login
 	 */
-	public boolean check_login(String user_name, String password) {
-		User user = this.getUserByUserName(user_name);
+	public boolean check_login(String username, String password) {
+		User user = this.getUserByUserName(username);
 		if (user != null) {
 			String user_real_password = user.getPassword();
 			String user_input_password = this.pwdMD5(password);
@@ -53,8 +53,8 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * Method get User By User Name
 	 */
-	private User getUserByUserName(String user_name) {
+	public User getUserByUserName(String username) {
 		// TODO Auto-generated method stub
-		return userDao.getUserByUserName(user_name);
+		return userDao.getUserByUserName(username);
 	}
 }

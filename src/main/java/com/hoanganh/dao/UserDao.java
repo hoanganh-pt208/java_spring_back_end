@@ -14,5 +14,5 @@ public interface UserDao {
 	/**
 	 * Method get User By User Name
 	 */
-	public User getUserByUserName(String user_name);
+	public User getUserByUserName(String username);
 }
